@@ -2,12 +2,12 @@
 name: Backend feature
 about: Template for backend features and their acceptance criteria
 title: 'BACKEND: '
-labels: Backend
+labels: Backend, User Story
 assignees: Felteng
 
 ---
 
-*Acceptance criteria*
+**Acceptance criteria:**
 
 1. Acceptance criteria 1
 2. Acceptance criteria 2
