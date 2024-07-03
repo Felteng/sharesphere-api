@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Profile
 from rest_framework import generics
 from .serializers import ProfileSerializer
+from sharesphere_drf_api.permissions import IsOwnerOrReadOnly
 
 
 class ListProfiles(generics.ListAPIView):
@@ -11,3 +12,9 @@ class ListProfiles(generics.ListAPIView):
     """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+
+
+class TargetProfile(generics.RetrieveUpdateAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [IsOwnerOrReadOnly]
