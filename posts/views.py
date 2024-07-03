@@ -1,5 +1,5 @@
 from .models import Post
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from .serializers import PostSerializer
 from sharesphere_drf_api.permissions import IsOwnerOrReadOnly
 
@@ -11,3 +11,11 @@ class ListPosts(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    filter_backends = [
+        filters.SearchFilter
+    ]
+    search_fields = [
+        'owner__username',
+        'title',
+    ]
