@@ -29,8 +29,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-felteng-sharesphereapi-3ql6decpfvg.ws.codeinstitute-ide.net']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.codeinstitute-ide.net',
+]
 
 # Application definition
 
@@ -56,6 +59,8 @@ INSTALLED_APPS = [
 
     'profiles',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
