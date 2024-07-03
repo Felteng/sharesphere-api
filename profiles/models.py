@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 
-# Create your models here.
+# Credit to code institute for various solutions used in this model:
+# https://github.com/Code-Institute-Solutions/drf-api/blob/ed54af9450e64d71bc4ecf16af0c35d00829a106/profiles/models.py
 class Profile(models.Model):
     """
     User profile model extending the base User model with various new fields:
@@ -19,7 +20,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=40, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(
-        upload_to='images/', default='./DEFAULTS/profile_default'
+        upload_to='images/', default='DEFAULTS/profile_default'
         )
     bio = models.CharField(max_length=300, blank=True)
     receieve_messages = models.BooleanField(default=True)
