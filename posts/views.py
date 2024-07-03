@@ -8,3 +8,6 @@ class ListPosts(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = PostSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

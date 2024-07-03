@@ -19,7 +19,7 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='images/', default='DEFAULTS/post_default'
         )
-    content = models.TextField()
+    content = models.TextField(blank=True)
 
     class Meta:
         ordering = ['-created_at']
