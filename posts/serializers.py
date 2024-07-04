@@ -6,6 +6,7 @@ class PostSerializer(serializers.ModelSerializer):
     Serializer for the Post model.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
+    likes_count = serializers.ReadOnlyField()
     is_owner = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
@@ -38,5 +39,5 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'owner', 'title', 'created_at', 'updated_at', 'image', 'content', 'is_owner']
+        fields = ['id', 'owner', 'title', 'created_at', 'updated_at', 'image', 'content', 'likes_count', 'is_owner']
         read_only_fields = ['id', 'created_at', 'updated_at']
