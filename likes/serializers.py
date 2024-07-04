@@ -7,10 +7,10 @@ class LikeSerializer(serializers.ModelSerializer):
     """
     Serializer for the Like model.
 
-    This serializer handles the representation and validation of Like instances.
-    The owner fields represents the owner's username.
+    Handles the representation and validation of Like instances.
+    The owner field represents the owner's username.
 
-    The create function modifies the creation of a like instance and attempts
+    The create method modifies the creation of a like instance and attempts
     to create a like with the validated data and handles IntegrityError in
     case of a duplicate instance by raising a validation error with a
     descriptive message.
