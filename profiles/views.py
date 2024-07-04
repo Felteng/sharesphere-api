@@ -1,7 +1,7 @@
-from .models import Profile
 from rest_framework import generics
-from .serializers import ProfileSerializer
 from sharesphere_drf_api.permissions import IsOwnerOrReadOnly
+from .serializers import ProfileSerializer
+from .models import Profile
 
 
 class ListProfiles(generics.ListAPIView):

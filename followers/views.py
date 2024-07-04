@@ -1,8 +1,7 @@
-from .models import Follower
 from rest_framework import generics, permissions
-from .serializers import FollowerSerializer
 from sharesphere_drf_api.permissions import IsOwnerOrReadOnly
-
+from .models import Follower
+from .serializers import FollowerSerializer
 
 
 class ListFollowers(generics.ListCreateAPIView):

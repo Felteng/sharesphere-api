@@ -1,8 +1,7 @@
-from .models import Comment
 from rest_framework import generics, permissions
-from .serializers import CommentSerializer, TagetCommentSerializer
 from sharesphere_drf_api.permissions import IsOwnerOrReadOnly
-
+from .models import Comment
+from .serializers import CommentSerializer, TagetCommentSerializer
 
 
 class ListComments(generics.ListCreateAPIView):

@@ -1,8 +1,7 @@
-from .models import Like
 from rest_framework import generics, permissions
-from .serializers import LikeSerializer
 from sharesphere_drf_api.permissions import IsOwnerOrReadOnly
-
+from .models import Like
+from .serializers import LikeSerializer
 
 
 class ListLikes(generics.ListCreateAPIView):
