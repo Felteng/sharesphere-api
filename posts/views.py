@@ -23,8 +23,9 @@ class ListPosts(generics.ListCreateAPIView):
     Override perform_create to ensure the owner field gets a value, the value
     will be that of the user performing the request.
 
-    Posts can be filtered through searching the post owner's name or title as
-    well as filtered by posts made by a single owner, or posts liked by a user
+    Posts can be filtered through searching the post owner's name or title.
+    Post can also be filtered by posts made by a single owner,
+    posts liked by a user, or posts from users that a user follows.
     """
     queryset = Post.objects.annotate(
         likes_count = Count('likes', distinct=True),
@@ -46,7 +47,8 @@ class ListPosts(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'owner__profile',
-        'likes__owner__profile'
+        'likes__owner__profile',
+        'owner__followed__owner__profile'
     ]
 
 class TargetPost(generics.RetrieveUpdateDestroyAPIView):

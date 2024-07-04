@@ -38,6 +38,9 @@ class ProfileSerializer(serializers.ModelSerializer):
         If the user making the request is following a particular profile
         return the the id of that follower instance. If the user is not
         following the user return None making following_id = null.
+
+        This is to help handle delete requests to unfollow a user from
+        the frontend.
         """
         user = self.context['request'].user
         if user.is_authenticated:
