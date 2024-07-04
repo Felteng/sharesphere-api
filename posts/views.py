@@ -34,3 +34,12 @@ class ListPosts(generics.ListCreateAPIView):
     filterset_fields = [
         'owner__profile'
     ]
+
+class TargetPost(generics.RetrieveUpdateDestroyAPIView):
+    """
+    RetrieveUpdateDestroy view to allow editing or deleting any post given
+    that the request comes from the owner of the post; IsOwnerOrReadOnly.
+    """
+    queryset = Post.objects.all()
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = PostSerializer

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     """
-    Post model related to the User model.
+    Post model related to 'owner' (User model).
     
     Posts are ordered by when they were created with the newest
     ones visible at the top.
