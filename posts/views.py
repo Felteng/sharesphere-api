@@ -24,7 +24,7 @@ class ListPosts(generics.ListCreateAPIView):
     """
     queryset = Post.objects.annotate(
         likes_count = Count('likes', distinct=True)
-    )
+    ).order_by('-created_at')
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = PostSerializer
 
@@ -48,6 +48,8 @@ class TargetPost(generics.RetrieveUpdateDestroyAPIView):
     RetrieveUpdateDestroy view to allow editing or deleting any post given
     that the request comes from the owner of the post; IsOwnerOrReadOnly.
     """
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        likes_count = Count('likes', distinct=True)
+    )
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PostSerializer
