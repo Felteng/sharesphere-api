@@ -20,7 +20,7 @@ class ListPosts(generics.ListCreateAPIView):
     will be that of the user performing the request.
 
     Posts can be filtered through searching the post owner's name or title as
-    well as filtered by posts made by a single owner.
+    well as filtered by posts made by a single owner, or posts liked by a user
     """
     queryset = Post.objects.annotate(
         likes_count = Count('likes', distinct=True)
@@ -40,7 +40,8 @@ class ListPosts(generics.ListCreateAPIView):
         'title',
     ]
     filterset_fields = [
-        'owner__profile'
+        'owner__profile',
+        'likes__owner__profile'
     ]
 
 class TargetPost(generics.RetrieveUpdateDestroyAPIView):
