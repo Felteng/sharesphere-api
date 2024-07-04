@@ -14,6 +14,10 @@ class ListProfiles(generics.ListAPIView):
 
 
 class TargetProfile(generics.RetrieveUpdateAPIView):
+    """
+    RetrieveUpdate view to allow editing the details on a profile given
+    that the request comes from the owner of the profile; IsOwnerOrReadOnly.
+    """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
