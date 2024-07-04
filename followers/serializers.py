@@ -18,6 +18,8 @@ class FollowerSerializer(serializers.ModelSerializer):
     case of a duplicate instance by raising a validation error with a
     descriptive message.
     It further ensures that a user cannot be followed twice by the same user.
+    It also checks the user being followed against the user making the request
+    so that a user cannot follow themselves.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='followed.username')
@@ -28,6 +30,14 @@ class FollowerSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'created_at']
 
     def create(self, validated_data):
+        request = self.context.get('request')
+        followed = validated_data.get('followed')
+
+        if followed == request.user:
+            raise serializers.ValidationError({
+                'detail': 'You cannot follow yourself.'
+            })
+
         try:
             return super().create(validated_data)
         except IntegrityError:
