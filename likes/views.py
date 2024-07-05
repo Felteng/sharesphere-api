@@ -6,7 +6,7 @@ from .serializers import LikeSerializer
 
 class ListLikes(generics.ListCreateAPIView):
     """
-    ListCreateAPIView to view all likes as well as create a like given
+    ListCreate view to view all likes as well as create a like given
     user is authenticated.
 
     Override perform_create to ensure the owner field gets a value, the value

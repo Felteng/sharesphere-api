@@ -6,7 +6,7 @@ from .serializers import CommentSerializer, TagetCommentSerializer
 
 class ListComments(generics.ListCreateAPIView):
     """
-    ListCreateAPIView to view all comments as well as create a comment given
+    ListCreate view to view all comments as well as create a comment given
     user is authenticated.
 
     Override perform_create to ensure the owner field gets a value, the value

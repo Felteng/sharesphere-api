@@ -6,7 +6,7 @@ from .models import Profile
 
 class ListProfiles(generics.ListAPIView):
     """
-    ListAPIView to view all profiles. No need for a create view as profiles
+    List view to view all profiles. No need for a create view as profiles
     are created upon signup.
     """
     queryset = Profile.objects.all()

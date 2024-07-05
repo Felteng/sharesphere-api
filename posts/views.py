@@ -11,7 +11,7 @@ from .serializers import PostSerializer
 
 class ListPosts(generics.ListCreateAPIView):
     """
-    ListCreateAPIView to view all posts as well as create a post given
+    ListCreate view to view all posts as well as create a post given
     user is authenticated.
 
     Adds likes_count field to each post object using annotate().

@@ -6,7 +6,7 @@ from .serializers import FollowerSerializer
 
 class ListFollowers(generics.ListCreateAPIView):
     """
-    ListCreateAPIView to view all follower instances as well as create a
+    ListCreate view to view all follower instances as well as create a
     follow given user is authenticated.
     
     Override perform_create to ensure the owner field gets a value, the value
