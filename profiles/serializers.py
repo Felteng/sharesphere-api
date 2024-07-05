@@ -13,6 +13,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     user of the requet follows a particular profile.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
+    followers_count = serializers.ReadOnlyField()
+    following_count = serializers.ReadOnlyField()
+    post_count = serializers.ReadOnlyField()
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
 
@@ -52,5 +55,5 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['id', 'owner', 'name', 'created_at', 'image', 'bio', 'receieve_messages', 'following_id', 'is_owner']
+        fields = ['id', 'owner', 'followers_count', 'following_count', 'post_count', 'name', 'created_at', 'image', 'bio', 'receieve_messages', 'following_id', 'is_owner']
         read_only_fields = ['id', 'created_at']
