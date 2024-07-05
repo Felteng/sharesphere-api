@@ -1,0 +1,1 @@
+web: gunicorn sharesphere_drf_api.wsgi
