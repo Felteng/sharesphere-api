@@ -1,6 +1,6 @@
 from django.db.models import Q
 from rest_framework import generics, permissions
-from sharesphere_drf_api.permissions import IsOwnerOrReadOnly, IsOwnerOrReceiver
+from sharesphere_drf_api.permissions import IsOwnerOrReceiver
 from .models import Message
 from .serializers import MessageSerializer
 

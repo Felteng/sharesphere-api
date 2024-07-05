@@ -1,6 +1,7 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Message
+from replies.serializers import ReplySerializer
 
 
 class MessageSerializer(serializers.ModelSerializer):
@@ -15,6 +16,7 @@ class MessageSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     is_owner = serializers.SerializerMethodField()
     is_receiver = serializers.SerializerMethodField()
+    replies = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         """
@@ -34,6 +36,10 @@ class MessageSerializer(serializers.ModelSerializer):
         """
         return naturaltime(obj.created_at)
 
+    def get_replies(self, obj):
+        replies = obj.replies.all()
+        return ReplySerializer(replies, many=True, context=self.context).data
+
     def create(self, validated_data):
         """
         Performs a check when a post request is made to ensure that
@@ -47,6 +53,6 @@ class MessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Message
-        fields = ['id', 'owner', 'receiver_name', 'receiver', 'topic', 'created_at', 'content', 'is_owner', 'is_receiver']
+        fields = ['id', 'owner', 'receiver_name', 'receiver', 'topic', 'created_at', 'content', 'is_owner', 'is_receiver', 'replies']
         read_only_fields = ['id']
 
