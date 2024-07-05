@@ -8,3 +8,9 @@ class Message(models.Model):
     topic = models.CharField(max_length=40)
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f'{self.owner} to {self.receiver}: {self.topic}'
