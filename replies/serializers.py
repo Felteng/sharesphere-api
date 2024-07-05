@@ -33,6 +33,19 @@ class ReplySerializer(serializers.ModelSerializer):
         Display creation time in comparative format.
         """
         return naturaltime(obj.created_at)
+
+    def create(self, validated_data):
+        """
+        Sets the receiver of the reply to the user of the original message
+        that did not make the post request.
+        
+        This ensures that the owner of the reply can always be fetched
+        so that replies can be deleted by the appropriate user.
+        """
+        owner = self.context.get('request').user
+        message = validated_data['message']
+        validated_data['receiver'] = message.receiver if owner == message.owner else message.owner
+        return super().create(validated_data)
         
 
     class Meta:
