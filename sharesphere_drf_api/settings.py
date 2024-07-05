@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = ['8000-felteng-sharesphereapi-3ql6decpfvg.ws.codeinstitute-ide.net']
 
@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'comments',
     'followers',
     'direct_messages',
+    'replies',
     
 ]
 

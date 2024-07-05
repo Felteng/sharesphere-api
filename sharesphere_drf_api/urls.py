@@ -32,5 +32,6 @@ urlpatterns = [
     path('', include('comments.urls')),
     path('', include('followers.urls')),
     path('', include('direct_messages.urls')),
+    path('', include('replies.urls')),
     
 ]
