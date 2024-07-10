@@ -23,7 +23,7 @@ class Profile(models.Model):
         upload_to='images/', default='DEFAULTS/profile_default'
         )
     bio = models.CharField(max_length=300, blank=True)
-    receieve_messages = models.BooleanField(default=True)
+    receive_messages = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['-created_at']
