@@ -1,4 +1,5 @@
 from rest_framework import generics, permissions
+from django_filters.rest_framework import DjangoFilterBackend
 from sharesphere_drf_api.permissions import IsOwnerOrReadOnly
 from .models import Comment
 from .serializers import CommentSerializer, TagetCommentSerializer
@@ -18,6 +19,13 @@ class ListComments(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner = self.request.user)
+
+    filter_backends = [
+        DjangoFilterBackend
+    ]
+    filterset_fields = [
+        'post',
+    ]
 
 
 class TargetComment(generics.RetrieveUpdateDestroyAPIView):
