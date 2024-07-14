@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Post
 from likes.models import Like
 
+
 class PostSerializer(serializers.ModelSerializer):
     """
     Serializer for the Post model.
@@ -19,7 +20,6 @@ class PostSerializer(serializers.ModelSerializer):
         Check if the user making the request is the owner of the post.
         """
         return self.context.get('request').user == obj.owner
-
 
     # https://github.com/Code-Institute-Solutions/drf-api/blob/ed54af9450e64d71bc4ecf16af0c35d00829a106/posts/serializers.py#L15-L26
     def validate_image(self, value):

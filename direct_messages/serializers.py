@@ -47,12 +47,15 @@ class MessageSerializer(serializers.ModelSerializer):
         """
         owner = self.context.get('request').user
         if validated_data['receiver'] == owner:
-            raise serializers.ValidationError("You can't send a message to yourself")
+            raise serializers.ValidationError(
+                "You can't send a message to yourself"
+            )
         return super().create(validated_data)
-        
 
     class Meta:
         model = Message
-        fields = ['id', 'owner', 'receiver_name', 'receiver', 'topic', 'created_at', 'content', 'is_owner', 'is_receiver', 'replies']
+        fields = [
+            'id', 'owner', 'receiver_name', 'receiver', 'topic', 'created_at',
+            'content', 'is_owner', 'is_receiver', 'replies'
+        ]
         read_only_fields = ['id']
-

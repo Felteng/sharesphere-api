@@ -3,7 +3,6 @@ from rest_framework import serializers
 from .models import Comment
 
 
-
 # Source:
 # https://github.com/Code-Institute-Solutions/drf-api/blob/ed54af9450e64d71bc4ecf16af0c35d00829a106/comments/serializers.py
 class CommentSerializer(serializers.ModelSerializer):
@@ -30,7 +29,6 @@ class CommentSerializer(serializers.ModelSerializer):
         """
         return self.context.get('request').user == obj.owner
 
-
     def get_created_at(self, obj):
         """
         Naturaltime renders datetime in a comparative format
@@ -43,8 +41,12 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ['id', 'owner', 'profile_id', 'profile_image', 'post', 'content', 'created_at', 'updated_at', 'is_owner']
+        fields = [
+            'id', 'owner', 'profile_id', 'profile_image', 'post',
+            'content', 'created_at', 'updated_at', 'is_owner'
+        ]
         read_only_fields = ['id', 'created_at', 'updated_at']
+
 
 class TagetCommentSerializer(CommentSerializer):
     """

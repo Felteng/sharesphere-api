@@ -9,7 +9,7 @@ class Profile(models.Model):
     """
     User profile model extending the base User model with various new fields:
     name, creation date, profile image, bio, and message preferences.
-    
+
     Profiles are ordered by when they were created with the newest
     ones visible at the top.
 
@@ -30,7 +30,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.owner} - Profile'
-  
+
 
 def create_profile(sender, instance, created, **kwargs):
     """
@@ -38,6 +38,7 @@ def create_profile(sender, instance, created, **kwargs):
     """
     if created:
         Profile.objects.create(owner=instance)
+
 
 # Signal to trigger create_profile function whenever a user is created
 post_save.connect(create_profile, sender=User)

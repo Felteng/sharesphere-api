@@ -17,7 +17,7 @@ class ListLikes(generics.ListCreateAPIView):
     serializer_class = LikeSerializer
 
     def perform_create(self, serializer):
-        serializer.save(owner = self.request.user)
+        serializer.save(owner=self.request.user)
 
 
 class TargetLike(generics.RetrieveDestroyAPIView):

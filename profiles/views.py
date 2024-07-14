@@ -24,9 +24,9 @@ class ListProfiles(generics.ListAPIView):
     posts liked by a user, or posts from users that a user follows.
     """
     queryset = Profile.objects.annotate(
-        followers_count = Count('owner__followed', distinct=True),
-        following_count = Count('owner__following', distinct=True),
-        post_count = Count('owner__post', distinct=True)
+        followers_count=Count('owner__followed', distinct=True),
+        following_count=Count('owner__following', distinct=True),
+        post_count=Count('owner__post', distinct=True)
     )
     serializer_class = ProfileSerializer
 
@@ -53,9 +53,9 @@ class TargetProfile(generics.RetrieveUpdateAPIView):
     that the request comes from the owner of the profile; IsOwnerOrReadOnly.
     """
     queryset = Profile.objects.annotate(
-        followers_count = Count('owner__followed', distinct=True),
-        following_count = Count('owner__following', distinct=True),
-        post_count = Count('owner__post', distinct=True)
+        followers_count=Count('owner__followed', distinct=True),
+        following_count=Count('owner__following', distinct=True),
+        post_coun=Count('owner__post', distinct=True)
     )
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]

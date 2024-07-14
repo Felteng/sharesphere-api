@@ -6,9 +6,6 @@ from .models import Post
 from .serializers import PostSerializer
 
 
-
-
-
 class ListPosts(generics.ListCreateAPIView):
     """
     ListCreate view to view all posts as well as create a post given
@@ -28,8 +25,8 @@ class ListPosts(generics.ListCreateAPIView):
     posts liked by a user, or posts from users that a user follows.
     """
     queryset = Post.objects.annotate(
-        likes_count = Count('likes', distinct=True),
-        comments_count = Count('comments', distinct=True)
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comments', distinct=True)
     ).order_by('-created_at')
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = PostSerializer
@@ -51,14 +48,15 @@ class ListPosts(generics.ListCreateAPIView):
         'owner__followed__owner__profile'
     ]
 
+
 class TargetPost(generics.RetrieveUpdateDestroyAPIView):
     """
     RetrieveUpdateDestroy view to allow editing or deleting any post given
     that the request comes from the owner of the post; IsOwnerOrReadOnly.
     """
     queryset = Post.objects.annotate(
-        likes_count = Count('likes', distinct=True),
-        comments_count = Count('comments', distinct=True)
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comments', distinct=True)
     )
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PostSerializer

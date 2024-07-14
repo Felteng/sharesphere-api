@@ -1,6 +1,7 @@
 from dj_rest_auth.serializers import UserDetailsSerializer
 from rest_framework import serializers
 
+
 # https://github.com/Code-Institute-Solutions/drf-api/blob/ed54af9450e64d71bc4ecf16af0c35d00829a106/drf_api/serializers.py
 class CurrentUserSerializer(UserDetailsSerializer):
     """

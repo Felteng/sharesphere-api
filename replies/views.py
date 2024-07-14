@@ -23,10 +23,13 @@ class ListReplies(generics.ListCreateAPIView):
         Queryset that ensures only the owner or receiver of a reply
         can read it.
         """
-        return Reply.objects.filter(Q(owner=self.request.user) | Q(receiver=self.request.user))
+        return Reply.objects.filter(
+            Q(owner=self.request.user) | Q(receiver=self.request.user)
+        )
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
 class TargetReply(generics.RetrieveDestroyAPIView):
     """

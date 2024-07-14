@@ -23,10 +23,13 @@ class ListMessages(generics.ListCreateAPIView):
         Queryset that ensures only the owner or receiver of a message
         can read it.
         """
-        return Message.objects.filter(Q(owner=self.request.user) | Q(receiver=self.request.user))
+        return Message.objects.filter(
+            Q(owner=self.request.user) | Q(receiver=self.request.user)
+        )
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
 class TargetMessage(generics.RetrieveDestroyAPIView):
     """

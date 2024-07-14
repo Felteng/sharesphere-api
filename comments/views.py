@@ -18,7 +18,7 @@ class ListComments(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
 
     def perform_create(self, serializer):
-        serializer.save(owner = self.request.user)
+        serializer.save(owner=self.request.user)
 
     filter_backends = [
         DjangoFilterBackend

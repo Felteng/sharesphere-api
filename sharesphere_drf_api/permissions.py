@@ -17,18 +17,20 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
         return obj.owner == request.user
 
+
 class IsOwnerOrReceiver(permissions.BasePermission):
     """
     Custom permission intended for messages and replies to only allow owners
     and receivers of a message to view it whilst only allowing the owners to
     edit it.
 
-    'if obj.receiver == request.user and request.method in permissions.SAFE_METHODS'
-    ensures that only the receiver will always have read permission.
-    
+    Ensures that the receiver will always have read permission.
     Write and read permissions will only be allowed to the obj.owner.
     """
     def has_object_permission(self, request, view, obj):
-        if obj.receiver == request.user and request.method in permissions.SAFE_METHODS:
+        if (
+            obj.receiver == request.user and
+            request.method in permissions.SAFE_METHODS
+        ):
             return True
         return obj.owner == request.user

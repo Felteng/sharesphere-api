@@ -38,18 +38,21 @@ class ReplySerializer(serializers.ModelSerializer):
         """
         Sets the receiver of the reply to the user of the original message
         that did not make the post request.
-        
+
         This ensures that the owner of the reply can always be fetched
         so that replies can be deleted by the appropriate user.
         """
         owner = self.context.get('request').user
         message = validated_data['message']
-        validated_data['receiver'] = message.receiver if owner == message.owner else message.owner
+        validated_data['receiver'] = (
+            message.receiver if owner == message.owner else message.owner
+        )
         return super().create(validated_data)
-        
 
     class Meta:
         model = Reply
-        fields = ['id', 'owner', 'receiver', 'message', 'created_at', 'content', 'is_owner', 'is_receiver']
+        fields = [
+            'id', 'owner', 'receiver', 'message', 'created_at',
+            'content', 'is_owner', 'is_receiver'
+            ]
         read_only_fields = ['id']
-
