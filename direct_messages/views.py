@@ -21,15 +21,14 @@ class ListMessages(generics.ListCreateAPIView):
     def get_queryset(self):
         """
         Queryset that ensures only the owner or receiver of a message
-        gets it.
+        gets it. Annotates the amount of replies related to the message
+        and further enforces ordering.
         """
         return Message.objects.filter(
             Q(owner=self.request.user) | Q(receiver=self.request.user)
         ).annotate(
             replies_count=Count('replies', distinct=True)
-          )
-        
-    
+          ).order_by('-created_at')
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

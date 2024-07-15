@@ -11,6 +11,9 @@ class MessageSerializer(serializers.ModelSerializer):
     since the owner (sender) has to be able to choose a receiver.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
+    owner_id = serializers.ReadOnlyField(source='owner.profile.id')
+    owner_image = serializers.ReadOnlyField(source='receiver.profile.image.url')
+    receiver_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     receiver_name = serializers.ReadOnlyField(source='receiver.username')
     replies_count = serializers.ReadOnlyField()
     created_at = serializers.SerializerMethodField()
@@ -51,6 +54,7 @@ class MessageSerializer(serializers.ModelSerializer):
         model = Message
         fields = [
             'id', 'owner', 'receiver_name', 'receiver', 'topic', 'created_at',
-            'content', 'is_owner', 'is_receiver', 'replies_count'
+            'content', 'is_owner', 'is_receiver', 'replies_count',
+            'owner_image', 'owner_id', 'receiver_image'
         ]
         read_only_fields = ['id']

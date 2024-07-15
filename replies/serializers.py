@@ -11,6 +11,9 @@ class ReplySerializer(serializers.ModelSerializer):
     since the owner (sender) has to be able to choose a receiver.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
+    owner_id = serializers.ReadOnlyField(source='owner.profile.id')
+    owner_image = serializers.ReadOnlyField(source='receiver.profile.image.url')
+    receiver_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     receiver = serializers.ReadOnlyField(source='receiver.username')
     created_at = serializers.SerializerMethodField()
     is_owner = serializers.SerializerMethodField()
@@ -52,7 +55,8 @@ class ReplySerializer(serializers.ModelSerializer):
     class Meta:
         model = Reply
         fields = [
-            'id', 'owner', 'receiver', 'message', 'created_at',
-            'content', 'is_owner', 'is_receiver'
+            'id', 'owner', 'receiver', 'message', 'created_at', 'content',
+            'is_owner', 'is_receiver','owner_image', 'owner_id',
+            'receiver_image'
             ]
         read_only_fields = ['id']
