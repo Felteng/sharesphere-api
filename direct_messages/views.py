@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, Count
 from rest_framework import generics, permissions
 from sharesphere_drf_api.permissions import IsOwnerOrReceiver
 from .models import Message
@@ -21,11 +21,15 @@ class ListMessages(generics.ListCreateAPIView):
     def get_queryset(self):
         """
         Queryset that ensures only the owner or receiver of a message
-        can read it.
+        gets it.
         """
         return Message.objects.filter(
             Q(owner=self.request.user) | Q(receiver=self.request.user)
-        )
+        ).annotate(
+            replies_count=Count('replies', distinct=True)
+          )
+        
+    
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -37,6 +41,8 @@ class TargetMessage(generics.RetrieveDestroyAPIView):
     Retrieval is only allowed by the owner or the receiever and deletion
     is only allowed by the owner.
     """
-    queryset = Message.objects.all()
+    queryset = Message.objects.annotate(
+            replies_count=Count('replies', distinct=True)
+          )
     serializer_class = MessageSerializer
     permission_classes = [IsOwnerOrReceiver]
