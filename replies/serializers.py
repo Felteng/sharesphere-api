@@ -13,10 +13,10 @@ class ReplySerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     owner_id = serializers.ReadOnlyField(source='owner.profile.id')
     owner_image = serializers.ReadOnlyField(
-        source='receiver.profile.image.url'
+        source='owner.profile.image.url'
         )
     receiver_image = serializers.ReadOnlyField(
-        source='owner.profile.image.url'
+        source='receiver.profile.image.url'
         )
     receiver = serializers.ReadOnlyField(source='receiver.username')
     created_at = serializers.SerializerMethodField()

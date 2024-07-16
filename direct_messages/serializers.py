@@ -13,10 +13,10 @@ class MessageSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     owner_id = serializers.ReadOnlyField(source='owner.profile.id')
     owner_image = serializers.ReadOnlyField(
-        source='receiver.profile.image.url'
+        source='owner.profile.image.url'
         )
     receiver_image = serializers.ReadOnlyField(
-        source='owner.profile.image.url'
+        source='receiver.profile.image.url'
         )
     receiver_name = serializers.ReadOnlyField(source='receiver.username')
     replies_count = serializers.ReadOnlyField()
