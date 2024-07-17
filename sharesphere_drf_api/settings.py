@@ -104,20 +104,21 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': (
         'rest_framework.pagination.LimitOffsetPagination'
     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [(
+      'rest_framework.authentication.SessionAuthentication'
+      if 'DEV' in os.environ
+      else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )],
     'PAGE_SIZE': 15,
     'DATETIME_FORMAT': '%d %b %Y',
 }
 
-if 'DEV' not in os.environ:
-    REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] = [
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    ]
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-        'rest_framework.renderers.JSONRenderer'
-    ]
 
 REST_AUTH = {
+    # HTTPYONLY has to be false for refresh_token to be sent to the client
+    # as per the dj-rest-auth documentation.
     'USE_JWT': True,
+    'JWT_AUTH_HTTPONLY': False,
     'JWT_AUTH_COOKIE': 'sharesphere-auth-token',
     'JWT_AUTH_REFRESH_COOKIE': 'sharesphere-refresh-token',
     'JWT_AUTH_SAMESITE': 'None',
@@ -161,7 +162,7 @@ WSGI_APPLICATION = 'sharesphere_drf_api.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-if 'DEV' not in os.environ:
+if 'DEV' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
