@@ -104,15 +104,18 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': (
         'rest_framework.pagination.LimitOffsetPagination'
     ),
-    'DEFAULT_AUTHENTICATION_CLASSES': [(
-      'rest_framework.authentication.SessionAuthentication'
-      if 'DEV' in os.environ
-      else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )],
     'PAGE_SIZE': 15,
     'DATETIME_FORMAT': '%d %b %Y',
 }
 
+# Default API renderer and session auth will be used in dev environment.
+if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_AUTHENTICATION_CLASSES'] = [
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    ]
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer'
+    ]
 
 REST_AUTH = {
     # HTTPYONLY has to be false for refresh_token to be sent to the client
