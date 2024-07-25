@@ -4,6 +4,45 @@ This is a private facing backend/API for the ShareSphere application, which curr
 
 [Live link](https://sharesphere-web-9f70d26dc82a.herokuapp.com/) to web based frontend for this API.
 
+## Table of Contents
+
+- [Agile Development](#agile-development)
+
+- [Database Design](#database-design)
+
+  - [Database Model](#database-model)
+  - [Custom Models](#custom-models)
+  - [CRUD/Features](#crudfeatures)
+
+- [Technologies Used](#technologies-used)
+
+  - [Environments](#environments)
+  - [Python Libraries and Packages](#python-libraries-and-packages)
+  - [Django Packages](#django-packages)
+  - [External Libraries and Packages](#external-libraries-and-packages)
+  - [Database](#database)
+
+- [Testing](#testing)
+
+  - [Test Guide](#test-guide)
+  - [Validator Testing](#validator-testing)
+  - [Addressed Bugs](#addressed-bugs)
+  - [Unaddressed Bugs](#unaddressed-bugs)
+
+- [Deployment](#deployment)
+
+  - [Local Deployment](#local-deployment)
+  - [Live Deployment](#live-deployment)
+
+- [Development](#development)
+
+  - [Clone](#clone)
+  - [Fork](#fork)
+  - [Download as ZIP](#download-as-zip)
+
+- [Credits](#credits)
+  - [Technical](#technical)
+
 ## Agile Development
 
 The entirety of this project has been built utilizing the agile development approach. The agile approach, combined with GitHub projects, has served as a tool that has helped visualize, plan, and execute different phases of the project development. The [GitHub project](https://github.com/users/Felteng/projects/4) created for this project features a kanban board where the various issues and their status can be seen. This backend application's repository as well as the frontend web repository share the same project board to ensure a seamless integration of development between the two.
@@ -26,7 +65,7 @@ The entity relationship diagram for the initial database model was made using [C
 
 - Any number of replies may be made in relation to a conversation for the users to engage in continous discussion about the topic.
 
-### CRUD
+### CRUD/Features
 
 The principles of CRUD are at the essence of this project's features and any future features.
 
@@ -346,8 +385,7 @@ Results collapsed into each app:
     - After referring to the dj-rest-auth documentation I learned that if this value is needed on the client side the only way to do so is to disable the HTTP Only protocol:
       ```python
       REST_AUTH = {
-      # HTTPYONLY has to be false for refresh_token to be sent to the client
-      # as per the dj-rest-auth documentation.
+      # HTTPYONLY has to be false for refresh_token to be sent to the client as per the dj-rest-auth documentation.
       'USE_JWT': True,
       'JWT_AUTH_HTTPONLY': False,
       ...
@@ -485,14 +523,58 @@ Now to prepare the project itself for deployment on Heroku we need to make sure 
 
     - I enabled automatic deploys for whenever a push is made to 'main' branch. This is however optional.
 
+## Development
+
+The following options are available to work with this code or run it in a local environment.
+
+### Clone.
+
+Pushed changes made to a local cloned repository will affect the original repository.
+
+- On to the main page of the repository.
+
+- Click on Code to toggle a dropdown menu above the list of files.
+
+- Choose your desired method to copy the URL for the repository.
+
+- In your work environment, open Git Bash and change current directory to target location for cloned repository.
+
+- Type git clone followed by the copied URL and press enter.
+
+### Fork
+
+Any changes made to a forked repository will not affect the original repository.
+
+- On the main repository page locate the fork button found in top right corner of the repository.
+
+- Click the Fork button.
+
+- Select a different owner if needed.
+
+- Click Create Fork.
+
+- The forked repository can now be found in the chosen owner account.
+
+### Download as ZIP.
+
+- On to the main page of the repository.
+
+- Click on Code to toggle a dropdown menu above the list of files.
+
+- Click on Download ZIP to start the download.
+
+- Once downloaded, extract ZIP and use it in your local development environment.
+
 ## Credits
 
 ### Technical
 
-- [Code Institute](https://codeinstitute.net/) for introduction and walkthrough of django and django rest framework
+- [Code Institute](https://codeinstitute.net/) for introduction and walkthrough of django and django rest framework.
 
-- Adam Lapinski from Code Institute for his [drf-api walkthrough](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) which was referred to on various occassions in this API
+- Adam Lapinski from Code Institute for his [drf-api walkthrough](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) which was referred to on various occassions in this API.
 
-- [DRF documentation](https://www.django-rest-framework.org)
+- [Django REST framewok documentation](https://www.django-rest-framework.org).
 
-- [Django documentation](https://docs.djangoproject.com/en/5.0/)
+- [Django documentation](https://docs.djangoproject.com/en/5.0/).
+
+- [Stack Overflow](https://stackoverflow.com/) for their extensive archive of various coding solutions and concepts.
