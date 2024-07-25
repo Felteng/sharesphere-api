@@ -44,13 +44,19 @@ class MessageSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """
-        Performs a check when a post request is made to ensure that
-        a user doesn't send a message to themselves.
+        Performs a check when a post request is made to ensure that a user
+        doesn't send a message to themselves.
+        Performs another check to ensure that a user who has receive_messages
+        set to False can't have a conversation started with.
         """
         owner = self.context.get('request').user
         if validated_data['receiver'] == owner:
             raise serializers.ValidationError(
-                "You can't send a message to yourself"
+                "You cannot start a conversation with yourself"
+            )
+        elif validated_data['receiver'].profile.receive_messages is False:
+            raise serializers.ValidationError(
+                "Cannot start a conversation with this user"
             )
         return super().create(validated_data)
 
