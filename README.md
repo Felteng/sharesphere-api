@@ -73,7 +73,7 @@ The principles of CRUD are at the essence of this project's features and any fut
 An authenticated user can create posts, like posts, follow other users, create post comments, and send direct messages to other users that have receive messages enabled.
 
 **Read:**
-A user can browse and read any posts made on the website and see thei respective amount of comments and likes, posts can also be sorted by ones the user has liked or from users they follow. Comments made under any post can be read by any user. If the user is engaged in any conversation with another user the contents of that conversation may also be read at any time. The amount of followers and or the amount of users a user follows can be seen from each indiviual users profile page.
+A user can browse and read any posts made on the website and see their respective amount of comments and likes, posts can also be sorted by ones the user has liked or from users they follow. Comments made under any post can be read by any user. If the user is engaged in any conversation with another user the contents of that conversation may also be read at any time. The amount of followers and or the amount of users a user follows can be seen from each indiviual users profile page.
 
 **Update:**
 An authenticated user can edit and update their profile as well as their individual contributuions to the site, bar conversations and their replies.
