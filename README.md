@@ -127,7 +127,7 @@ An authenticated user can delete any of their contributions made to the site. Un
 
 ### Test Guide
 
-Refer to [TESTING.md](TESTING.md) for the manual and automatic tests that have been carried out.
+Refer to the frontend [TESTING.md](https://github.com/Felteng/sharesphere-web/blob/main/TESTING.md) for the manual and automatic tests that have been carried out.
 
 ### Validator Testing
 
