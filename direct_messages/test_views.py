@@ -60,12 +60,12 @@ class TestMessagesViews(TestCase):
                     message['topic'], self.message.topic,
                     msg='Message topic in list does not match'
                 )
-                self.assertEqual(
-                    message["is_owner"], True,
+                self.assertTrue(
+                    message["is_owner"],
                     msg='User 1 is not owner of the message in the list'
                 )
-                self.assertEqual(
-                    message['is_receiver'], False,
+                self.assertFalse(
+                    message['is_receiver'],
                     msg='User 1 is the receiver of the message in the list'
                 )
                 break
@@ -88,12 +88,12 @@ class TestMessagesViews(TestCase):
                     message['topic'], self.message.topic,
                     msg='Message topic in list does not match'
                 )
-                self.assertEqual(
-                    message["is_owner"], False,
+                self.assertFalse(
+                    message["is_owner"],
                     msg='User 2 is the owner of the message in the list'
                 )
-                self.assertEqual(
-                    message['is_receiver'], True,
+                self.assertTrue(
+                    message['is_receiver'],
                     msg='User 2 is not the receiver of the message in the list'
                 )
                 break
@@ -131,12 +131,12 @@ class TestMessagesViews(TestCase):
             response.data['topic'], self.message.topic,
             msg='Message topic does not match, is the wrong message rendered?'
         )
-        self.assertEqual(
-            response.data['is_owner'], True,
+        self.assertTrue(
+            response.data['is_owner'],
             msg='User 1 is not the message owner'
         )
-        self.assertEqual(
-            response.data['is_receiver'], False,
+        self.assertFalse(
+            response.data['is_receiver'],
             msg='User 1 is the message receiver'
         )
 
@@ -154,12 +154,12 @@ class TestMessagesViews(TestCase):
             response.data['topic'], self.message.topic,
             msg='Message topic does not match, is the wrong message rendered?'
         )
-        self.assertEqual(
-            response.data['is_owner'], False,
+        self.assertFalse(
+            response.data['is_owner'],
             msg='User 2 is the message owner'
         )
-        self.assertEqual(
-            response.data['is_receiver'], True,
+        self.assertTrue(
+            response.data['is_receiver'],
             msg='User 2 is not the message receiver'
         )
 
