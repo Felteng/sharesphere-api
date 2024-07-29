@@ -165,7 +165,7 @@ WSGI_APPLICATION = 'sharesphere_drf_api.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-if 'DEV' not in os.environ:
+if 'DEV' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

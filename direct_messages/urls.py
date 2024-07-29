@@ -4,5 +4,5 @@ from .views import ListMessages, TargetMessage
 
 urlpatterns = [
     path('messages/', ListMessages.as_view(), name='list_messages'),
-    path('messages/<int:pk>', TargetMessage.as_view(), name='taget_message'),
+    path('messages/<int:pk>', TargetMessage.as_view(), name='target_message'),
 ]
