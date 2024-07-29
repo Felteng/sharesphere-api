@@ -73,12 +73,12 @@ The principles of CRUD are at the essence of this project's features and any fut
 An authenticated user can create posts, like posts, follow other users, create post comments, and send direct messages to other users that have receive messages enabled.
 
 **Read:**
-A user can browse and read any posts made on the website and see their respective amount of comments and likes, posts can also be sorted by ones the user has liked or from users they follow. Comments made under any post can be read by any user. If the user is engaged in any conversation with another user the contents of that conversation may also be read at any time. The amount of followers and or the amount of users a user follows can be seen from each indiviual users profile page.
+A user can browse and read any posts made on the website and see their respective amount of comments and likes, posts can also be sorted by ones the user has liked or from users they follow. Comments made under any post can be read by any user. If the user is engaged in any conversation with another user the contents of that conversation may also be read at any time. The amount of followers and or the amount of users a user follows can be seen from each individual users profile page.
 
 **Update:**
-An authenticated user can edit and update their profile as well as their individual contributuions to the site, bar conversations and their replies.
+An authenticated user can edit and update their profile as well as their individual contributions to the site, bar conversations and their replies.
 
-- The reason a conversation or reply cannot be edited is to avoid any malicious altering of a private conversation between 2 indivuals to make it seem as though a user had different intents in relation previous messages. They may still be deleted to ensure controlled privacy.
+- The reason a conversation or reply cannot be edited is to avoid any malicious altering of a private conversation between 2 individuals to make it seem as though a user had different intents in relation previous messages. They may still be deleted to ensure controlled privacy.
   - This could be worked around as a future feature where any updates made would save history of the previous versions of an object.
 
 **Delete:**
@@ -95,7 +95,7 @@ An authenticated user can delete any of their contributions made to the site. Un
 
 ### Python Libraries and Packages
 
-- [pillow](https://pypi.org/project/pillow/) (Adds extensive image proccessing capabilities)
+- [pillow](https://pypi.org/project/pillow/) (Adds extensive image processing capabilities)
 
 - [psycopg2](https://pypi.org/project/psycopg2/) (Adapter for PostgreSQL databases)
 
@@ -501,7 +501,7 @@ Sign in or create an account at [Heroku](https://heroku.com) and once that's don
 
 8. Below Config Vars we need to add the heroku/python buildpack.
 
-Now to prepare the project itself for deployment on Heroku we need to make sure Heroku knows what dependencies to install to run the project and that the project recognizes heroku as a safe host.
+Now to prepare the project itself for deployment on Heroku we need to make sure Heroku knows what dependencies to install to run the project and that the project recognizes Heroku as a safe host.
 
 9. Make sure there's a file called 'requirements.txt' in the root directory.
 
@@ -571,7 +571,7 @@ Any changes made to a forked repository will not affect the original repository.
 
 - [Code Institute](https://codeinstitute.net/) for introduction and walkthrough of django and django rest framework.
 
-- Adam Lapinski from Code Institute for his [drf-api walkthrough](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) which was referred to on various occassions in this API.
+- Adam Lapinski from Code Institute for his [drf-api walkthrough](https://github.com/Code-Institute-Solutions/drf-api/tree/ed54af9450e64d71bc4ecf16af0c35d00829a106) which was referred to on various occasions in this API.
 
 - [Django REST framewok documentation](https://www.django-rest-framework.org).
 
